@@ -19,7 +19,7 @@ class Home extends Page
         $obAnuncio->setEndereco($obEndereco);
 
 
-        $content = View::render('pages/index', [
+        $content = View::render('pages/home', [
             'valor' => '7.500.000',
             'condominio'=> '460',
             'iptu' => '6.000',
