@@ -17,6 +17,12 @@ $obRouter->get('/cadastro', [
     }
 ]);
 
+$obRouter->post('/cadastro', [
+    function($request){
+        return new Response(200, Pages\CadastroUsuario::getCadastro());
+    }
+]);
+
 //ROTA DINÂMICA
 $obRouter->get('/pagina/{idPagina}/{acao}', [
     function($idPagina, $acao){
@@ -27,5 +33,17 @@ $obRouter->get('/pagina/{idPagina}/{acao}', [
 $obRouter->get('/login', [
     function(){
         return new Response(200, Pages\Login::getLogin());
+    }
+]);
+
+$obRouter->post('/login', [
+    function(){
+        return new Response(200, Pages\Login::getLogin());
+    }
+]);
+
+$obRouter->get('/anuncios', [
+    function(){
+        return new Response(200, Pages\Anuncios::getAnuncios());
     }
 ]);

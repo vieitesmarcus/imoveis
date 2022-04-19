@@ -2,15 +2,20 @@
 
 namespace App\Model\Entity;
 
+use App\Lib\Database;
+
 class Anuncio
 {
-    public int $id;
-    public string $descricao;
-    public string $valor;
-    public string $iptu;
-    public string $condominio;
-    public string $urlFoto;
-    public Endereco $endereco;
+    
+    public int $id; //identificador unico do anuncio
+    public string $data;
+    public string $descricao; // descrição do anuncio
+    public string $valor; // valor do anuncio
+    public string $iptu; // valor do iptu
+    public string $condominio; // valor do condomionio
+    public string $urlFoto; // url da foto
+    public Endereco $endereco;  // endereco do anuncio
+    public int $id_usuario; // identificador do usuario que anunciou
     
     /**
      * Get the value of descricao
@@ -118,5 +123,38 @@ class Anuncio
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get the value of id_usuario
+     */ 
+    public function getId_usuario()
+    {
+        return $this->id_usuario;
+    }
+
+    /**
+     * Set the value of id_usuario
+     *
+     * @return  self
+     */ 
+    public function setId_usuario($id_usuario)
+    {
+        $this->id_usuario = $id_usuario;
+
+        return $this;
+    }
+
+    //cadastrar novo anuncio
+    public function cadastrar(): void
+    {
+        //definir a data 
+        $this->data = date('Y-m-d H:i:s');
+        //inserir o anuncio no banco
+        $obDatabase = new Database('anuncios');
+        echo '<pre>';
+            print_r($obDatabase);
+        echo '</pre>';exit();
+        //atribuir o id no anuncio
     }
 }

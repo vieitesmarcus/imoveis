@@ -2,6 +2,7 @@
 
 namespace App\Controller\Pages;
 
+use App\Model\Entity\Usuario;
 use App\Utils\View;
 
 class CadastroUsuario extends Page
@@ -10,6 +11,9 @@ class CadastroUsuario extends Page
     public static function getCadastro(): string
     {
         
+        $obUsuario = new Usuario();
+        $obUsuario->cadastrar();
+
         $content = View::render('pages/cadastroUsuario', [
             
         ]);
